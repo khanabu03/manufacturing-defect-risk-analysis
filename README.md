@@ -103,8 +103,8 @@ manufacturing-defect-risk-analysis/
         ├── 11_cost_efficiency.jpg
         └── 12_high_risk_profile.jpg
 
-Project Workflow
-1. Data Import and Cleaning
+## **Project Workflow**
+### 1. Data Import and Cleaning
 
 The raw dataset was first imported into a staging table where all columns were stored as text. This avoided import failures caused by blanks, nulls, or type conversion issues.
 
