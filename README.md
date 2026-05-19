@@ -126,10 +126,15 @@ Before performing analysis, the cleaned table was validated to make sure it was 
 The validation process included:
 
 Confirming final row count after import
+
 Checking for null values in key columns
+
 Verifying numeric ranges for major operational metrics
+
 Confirming valid binary values in DefectStatus
+
 Data Validation Results
+
 Row Count Validation
 
 The final cleaned table contained:
