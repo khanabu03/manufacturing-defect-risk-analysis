@@ -107,7 +107,7 @@ manufacturing-defect-risk-analysis/
 ---
 
 ## Project Workflow
-1. Data Import and Cleaning
+## 1. Data Import and Cleaning
 
 The raw dataset was first imported into a staging table where all columns were stored as text. This avoided import failures caused by blanks, nulls, or type conversion issues.
 
@@ -119,7 +119,7 @@ Raw CSV → Staging Table → Clean Typed Table → Analysis
 
 This approach allowed the data to be imported safely before enforcing numeric data types.
 
-2. Data Validation
+## 2. Data Validation
 
 Before performing analysis, the cleaned table was validated to make sure it was reliable and suitable for analysis.
 
@@ -139,7 +139,7 @@ Final Rows	3,240
 
 The row count matched the expected dataset size, confirming that no records were lost during the staging and cleaning process.
 
-Null Value Check
+## Null Value Check
 
 Key operational and quality fields were checked for missing values.
 
@@ -153,7 +153,7 @@ DefectStatus	0
 
 No null values were found in the main analysis fields.
 
-Numeric Range Check
+## Numeric Range Check
 
 The numeric range check confirmed that key fields contained reasonable values after type conversion.
 
@@ -167,7 +167,7 @@ ProductionCost	5,000.17	19,993.37
 
 The ranges appeared valid, with no obvious import or conversion errors.
 
-Defect Status Distribution
+## Defect Status Distribution
 
 DefectStatus was checked to confirm that it contained valid binary values only.
 
@@ -179,7 +179,7 @@ The dataset is heavily weighted toward defective records, with a defect status r
 
 This influenced the direction of the analysis. Instead of treating defects as rare events, the project focused on identifying which operating conditions were associated with even higher defect risk.
 
-Baseline KPI Analysis
+## Baseline KPI Analysis
 
 The overall manufacturing baseline was calculated to understand the general production, quality, cost, and defect profile of the dataset.
 
@@ -205,7 +205,7 @@ Defect Status Rate	84.04%
 
 The baseline shows a high-defect production environment, making defect-risk separation the main focus of the project.
 
-Defect Risk Analysis
+## Defect Risk Analysis
 
 The analysis compared defective and non-defective records to identify which operational conditions were most different when defects occurred.
 
@@ -231,7 +231,7 @@ Maintenance hours
 
 Defective records were associated with higher production volume, higher maintenance hours, higher defect rate, and lower quality score.
 
-Risk Factor Analysis
+## Risk Factor Analysis
 
 Several operational factors were grouped into bands to test whether they meaningfully separated defect outcomes.
 
@@ -245,7 +245,7 @@ High production volume records had a defect status rate above 91%, around 10 per
 
 This suggests that heavier production loads may be associated with increased defect risk.
 
-Maintenance Hours Band
+## Maintenance Hours Band
 Maintenance Band	Records	Avg Maintenance Hours	Defect Status Rate
 Low Maintenance	1,091	3.52	71.40%
 Medium Maintenance	797	10.64	80.80%
@@ -255,7 +255,7 @@ High maintenance records showed the strongest defect-risk separation, with a def
 
 This suggests that maintenance-heavy conditions may reflect equipment stress, recurring process issues, or operational instability.
 
-Quality Score Band
+## Quality Score Band
 Quality Score Band	Records	Avg Quality Score	Defect Status Rate
 Low Quality Score	1,190	67.37	95.80%
 Medium Quality Score	1,208	82.40	77.07%
@@ -265,7 +265,7 @@ Defect risk increased sharply when quality score dropped below 75.
 
 Medium and high quality score bands showed similar defect rates, suggesting the main risk threshold occurs at the low-quality level.
 
-Downtime Percentage Band
+## Downtime Percentage Band
 Downtime Band	Records	Avg Downtime Percentage	Defect Status Rate
 Low Downtime	982	0.77	84.11%
 Medium Downtime	1,278	2.48	84.12%
@@ -275,7 +275,7 @@ Downtime percentage did not meaningfully separate defect outcomes.
 
 Defect status rates stayed close to 84% across all downtime bands.
 
-Supplier Quality Band
+## Supplier Quality Band
 Supplier Quality Band	Records	Avg Supplier Quality	Defect Status Rate
 Low Supplier Quality	835	82.51	82.87%
 Medium Supplier Quality	1,625	89.90	84.37%
@@ -283,7 +283,7 @@ High Supplier Quality	780	97.53	84.62%
 
 Supplier quality showed minimal separation across bands and was not a strong defect-risk signal in this dataset.
 
-Worker Productivity Band
+## Worker Productivity Band
 Productivity Band	Records	Avg Worker Productivity	Defect Status Rate
 Low Productivity	1,111	83.51	84.61%
 Medium Productivity	1,153	90.52	83.26%
@@ -293,7 +293,7 @@ Worker productivity did not meaningfully separate defect outcomes.
 
 The defect status rate remained close across all productivity bands.
 
-Cost and Efficiency Analysis
+## Cost and Efficiency Analysis
 
 Cost and efficiency metrics were compared between defective and non-defective records.
 
@@ -309,7 +309,7 @@ Defective records had slightly higher production cost and energy consumption, bu
 
 Cost and efficiency metrics were not the strongest defect-risk signals in this dataset.
 
-Combined Risk Profile
+## Combined Risk Profile
 
 The strongest individual risk factors were combined into a practical risk profile.
 
@@ -331,15 +331,15 @@ Records with no major risk factors had a defect status rate of 53.89%, while rec
 
 This suggests that the presence of any major risk factor sharply increases defect likelihood.
 
-Dashboard
+## Dashboard
 
 The Power BI dashboard summarizes the main findings and highlights the strongest defect-risk signals.
 
-SQL Result Screenshots
+## SQL Result Screenshots
 
 Detailed SQL result screenshots are available in the visuals/sql-results folder.
 
-Key Findings
+## Key Findings
 The overall defect status rate was 84.04%, showing a high-defect production environment.
 High maintenance hours showed the strongest defect-risk separation, with a 96.15% defect status rate.
 Low quality score records had a 95.80% defect status rate.
@@ -347,7 +347,8 @@ High production volume records had a 91.16% defect status rate.
 Downtime percentage, supplier quality, and worker productivity were weaker signals.
 Records with no major risk factors had a much lower defect status rate of 53.89%.
 Records with one or more major risk factors had defect status rates above 92%.
-Business Recommendation
+
+## Business Recommendation
 
 Quality teams should prioritize monitoring production records with:
 
@@ -359,7 +360,7 @@ These conditions showed the clearest separation in defect risk.
 
 Downtime percentage, supplier quality, and worker productivity were weaker signals in this dataset and should not be treated as primary defect-risk indicators without further investigation.
 
-Final Insight
+## Final Insight
 
 Defect risk was not evenly explained by every operational metric.
 
@@ -367,7 +368,7 @@ The strongest signals were maintenance intensity, low quality performance, and h
 
 This analysis shows how manufacturing teams can use operational data to prioritize quality monitoring around the conditions most associated with defective outcomes.
 
-Limitations
+## Limitations
 The dataset does not include machine ID, operator ID, shift, or production date.
 Because no time column was available, trend analysis over time could not be performed.
 DefectStatus was heavily imbalanced, with 84.04% defective records.
@@ -375,7 +376,7 @@ The analysis identifies associations, not direct causation.
 Downtime was provided as a percentage rather than actual downtime minutes.
 The raw dataset is not included if redistribution rights are unclear.
 
-Skills Demonstrated
+## Skills Demonstrated
 SQL data cleaning and validation
 Staging-table import workflow
 Safe type conversion using TRY_CAST
